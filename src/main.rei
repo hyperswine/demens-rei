@@ -1,25 +1,36 @@
-# THIS FILE DEFINES YOUR MAIN FUNCTION'S NAMESPACE
+#*
+    DEMENS
+*#
 
-// executable entry point (after runtime initialisation)
 main: () -> Status {
-    println("Hello, World!")
+    terra3d::run()
 }
 
-// empty pure object
-World: ()
+Health: f16
 
-// extension block
-World: extend {
-    // system fn's are called on all instances
-    globalise: system () => println("The world just got bigger")
+// 10,000 entities in a world. If you want more, create more worlds
+const MAX_SIZE = 10000
+
+// defined in t3d
+World: {
+    damage: system (&self, health: &mut Health, damage: () -> f16) {
+        health = clamp(0, health - damage())
+    }
+
+    # create a new entity in the world with a set of component instances
+    new_entity: (&mut self, components: Component...) -> Entity {
+        let res = Entity(components)
+        self.register(res)
+
+        res
+    }
+
+    register: (&mut self, entity: Entity) {
+        self.entities.push(entity)
+    }
+
+    entities: [Entity; MAX_SIZE]
 }
 
-// unit test
-@test
-globalise_world: () {
-    // for pure objects, simply returns the obj itself. For data objects, simply the default constructor
-    let old_world = World()
-    let new_world = World()
-    // call World's associated system fn to operate on all World instances
-    World::globalise()
-}
+// when something with hp gets "hit" by "something"
+// that something gets a () -> f16 based on the atk
