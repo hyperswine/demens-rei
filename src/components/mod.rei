@@ -208,6 +208,19 @@ Building: {
 // to prevent annoyingness, there isnt golden ages or loyalty and crap
 // just pillage, build ontop of and capture where possible
 
+// level 3 economics centres usually become skyscrapers
+// so as education centres and housing centres
+// buildings rank up automatically as stuff happens and time goes past
+// the more buildings you build around each other, the faster they rank up
+// you can also buy rank ups, but it isnt a good idea
+// level 3 industry centres and resource gathering centres become very efficient and very clean
+// level 3 defense and combat buildings become quite good
+// the level of the road depends on the total levels of the buildings connected to it. Its continous but there is a big boost when you upgrade the level
+// level 3 roads make resource rates and traveling on those tiles fast. Some specical roads are super fast like rails. Which require trains. When you move a unit onto the tile it will automatically become a train which you can command. Becomes really nice as you start mobilising armies
+// level 3 energy gathering and industry buildings become very efficient. But usually require the most science rather than manpower and building adjacency and happiness
+// the ultimate unit is like in sc2, a mothership and 1000 men armies. Like in civ6 you can group units into corps and armies and stuff by simply grouping them together. Its gonna be very hard to command otherwise. You then have lower level squadron commanders that do the actual work. You just press the city and start commanding each corp within the army
+// buildings usually dont downgrade when you start getting damages. But high inequality tends to lead to bottlenecks and all sorts of problems
+
 Building: enum {
     // farm
     Farm: enum => Outdoor | Indoor
